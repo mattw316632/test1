@@ -26,7 +26,7 @@
 
     if($obj['username']!=null){
         if($result->num_rows==0){
-            echo json_encode('success' => false, 'message' => 'error');
+            echo json_encode('success' => false, 'message' => 'user not found');
         }
         else{
             
@@ -34,7 +34,7 @@
         }
     }
     else{
-        echo json_encode('try_again');
+        echo json_encode('success' => false, 'message' => 'error');
     }
  
     $conn->close();
