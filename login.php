@@ -3,10 +3,10 @@
 
     $host = "mysql:dbname=db1;unix_socket=/cloudsql/mattw316632:europe-west1:test01";
     $database = "test01";
-    $username = "root";
-    $password ="hmmlol12";
+    $username = "user";
+    $password ="";
     
-    $conn = new mysqli(null, $username, $password,
+    $conn = new mysqli(null, $username, '',
 'db1', null, '/cloudsql/mattw316632:europe-west1:test01');
     //$conn = new mysqli($host, $username, $passtword);
     $json = file_get_contents('php://input');  
