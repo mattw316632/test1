@@ -1,26 +1,28 @@
 
 <?php 
 
-    $host = "localhost";
+    $host = "mysql:dbname=db1;unix_socket=/cloudsql/mattw316632:europe-west1:test01";
     $database = "test01";
     $username = "root";
-    $password ="";
-
-    $conn = new mysqli($host, $username, $passtword, $database);
+    $password ="hmmlol12";
+    
+    $conn = new mysqli(null, $username, $password,
+'db1', null, '/cloudsql/mattw316632:europe-west1:test01');
+    //$conn = new mysqli($host, $username, $passtword);
     $json = file_get_contents('php://input');  
  
     $obj = json_decode($json,true);
-    $email= $obj['email'];
-    $password = $obj['password'];
+    $uName= $obj['username'];
+    $uPass = $obj['password'];
  
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $sql = "select * from user where email='$email' and password='$password'";
+    $sql = "select * from user where email='$uName' and password='$uPass'";
     $result = $conn->query($sql);
 
-    if($obj['email']!=null){
+    if($obj['username']!=null){
         if($result->num_rows==0){
             echo json_encode('Wrong Details');
         }
