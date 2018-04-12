@@ -1,6 +1,6 @@
 
 <?php 
-/*
+
     $host = "localhost";
     $database = "test01";
     $username = "root";
@@ -33,6 +33,6 @@
     }
  
     $conn->close();
-    */
-echo 'Hello';
+    
+
 
