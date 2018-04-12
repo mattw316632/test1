@@ -26,15 +26,20 @@
 
     if($obj['username']!=null){
         if($result->num_rows==0){
-            echo json_encode('success' => false, 'message' => 'user not found');
+            $output = array('success' => false, 'message' => 'user not found');
+            
+            echo json_encode(output); 
         }
         else{
+            $output = array('success' => true, 'user' => $uName);
             
-            echo json_encode('success' => true, 'user' => $uName); 
+            echo json_encode(output); 
         }
     }
     else{
-        echo json_encode('success' => false, 'message' => 'error');
+        $output = array('success' => false, 'message' => 'error');
+        
+        echo json_encode(output); 
     }
  
     $conn->close();
