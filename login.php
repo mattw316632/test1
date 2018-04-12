@@ -26,10 +26,11 @@
 
     if($obj['username']!=null){
         if($result->num_rows==0){
-            echo json_encode('Wrong Details');
+            echo json_encode('success' => false, 'message' => 'error');
         }
         else{
-            echo json_encode('ok');
+            
+            echo json_encode('success' => true, 'user' => $uName); 
         }
     }
     else{
