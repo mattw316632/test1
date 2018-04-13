@@ -7,7 +7,7 @@
     $password ="";
     
     $conn = new mysqli(null, $username, '',
-'db1', null, '/cloudsql/mattw316632:europe-west1:test01');
+'db1', null, '/cloudsql/mattw316632-201000:europe-west1:test01');
     
 
     //$conn = new mysqli($host, $username, $passtword, $database);
