@@ -14,8 +14,8 @@
     $json = file_get_contents('php://input');  
  
     $obj = json_decode($json,true);
-    $uName= $obj['username'];
-    $uPass = $obj['password'];
+    $uName= $obj->{'username'};
+    $uPass = $obj->{'password'};
  
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -26,20 +26,23 @@
 
     if($obj['username']!=null){
         if($result->num_rows==0){
-            $output = array('success' => false, 'message' => 'user not found');
+            $outputObj->success = false;
+            $outputObj->message = "User not found";
             
-            echo json_encode(output); 
+            echo json_encode($outputObj); 
         }
         else{
-            $output = array('success' => true, 'user' => $uName);
+            $outputObj->success = true;
+            $outputObj->user = $uName;
             
-            echo json_encode(output); 
+            echo json_encode($outputObj); 
         }
     }
     else{
-        $output = array('success' => false, 'message' => 'error');
+        $outputObj->success = false;
+        $outputObj->message = "Error";
         
-        echo json_encode(output); 
+        echo json_encode($outputObj); 
     }
  
     $conn->close();
