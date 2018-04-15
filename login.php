@@ -24,7 +24,7 @@
     $sql = "select * from user where username='$uName' and password='$uPass'";
     $result = $conn->query($sql);
 
-    if($obj['username']!=null){
+    if($obj[$uName != null){
         if($result->num_rows==0){
             $outputObj->success = false;
             $outputObj->message = "User not found";
