@@ -14,8 +14,8 @@
     $json = file_get_contents('php://input');  
  
     $obj = json_decode($json,true);
-    $uName= $obj->{'username'};
-    $uPass = $obj->{'password'};
+    $uName= $obj["username"];
+    $uPass = $obj["password"];
  
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -24,7 +24,7 @@
     $sql = "select * from user where username='$uName' and password='$uPass'";
     $result = $conn->query($sql);
 
-    if($uName != null){
+    if($obj["username"] != null){
         if($result->num_rows==0){
             $outputObj->success = false;
             $outputObj->message = "User not found";
