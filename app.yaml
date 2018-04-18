@@ -4,8 +4,8 @@ handlers:
 - url: /.*
   script: login.php
   
-- url: /login
+- url: /login\.php
   script: login.php
   
-- url: /signup
+- url: /signup\.php
   script: signup.php
