@@ -1,14 +1,10 @@
 runtime: php55
 api_version: 1
-threadsafe: true
 
 handlers:
-- url: /signup
-  script: signup.php
-  
 - url: /.*
   script: signup.php
-
   
-- url: /login
+- url: /.login
   script: login.php
+  
