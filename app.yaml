@@ -9,4 +9,4 @@ handlers:
   script: login.php
   
 - url: /uploadfile.*
-  script: login.php
+  script: uploadfile.php
