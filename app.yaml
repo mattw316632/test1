@@ -1,10 +1,14 @@
 runtime: php55
 api_version: 1
+threadsafe: true
+
 handlers:
-- url: /.*
-  static_files: signup.php
-  upload: signup.php
+- url: /signup
+  script: signup.php
   
 - url: /.*
-  static_files: login.php
-  upload: login.php
+  script: signup.php
+
+  
+- url: /login
+  script: login.php
