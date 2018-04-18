@@ -8,3 +8,5 @@ handlers:
 - url: /login.*
   script: login.php
   
+- url: /uploadfile.*
+  script: login.php

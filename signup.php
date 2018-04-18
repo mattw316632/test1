@@ -31,7 +31,7 @@
             if($add == true){
                 $outputObj->success = true;
                 $outputObj->user = $uName;
-                $outputObj->message = "You have signed p";
+                $outputObj->message = "You have signed up";
             
                 echo json_encode($outputObj);
             }
