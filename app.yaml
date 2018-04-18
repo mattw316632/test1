@@ -2,9 +2,9 @@ runtime: php55
 api_version: 1
 handlers:
 - url: /.*
-  script: signup.php
+  static_files: signup.php
   upload: signup.php
   
 - url: /.*
-  script: login.php
+  static_files: login.php
   upload: login.php
