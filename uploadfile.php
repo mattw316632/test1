@@ -17,17 +17,3 @@ if(isset($_POST['submit']))
 }  
   
 ?>  
-    <html>  
-  
-    <body>  
-        <form action="#" method="post" enctype="multipart/form-data"> Send these files:  
-            <p/> <input name="userfile" type="file" />  
-            <p/> <input type="submit" name="submit" value="Send files" /> </form>  
-    </body>  
-  
-    </html>  
-    <?php  
-  
-echo $_url;  
-  
-?>  
