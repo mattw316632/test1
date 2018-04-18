@@ -3,4 +3,5 @@ api_version: 1
 handlers:
 - url: /.*
   script: login.php
+- url: /.*
   script: signup.php
