@@ -2,7 +2,7 @@ runtime: php55
 api_version: 1
 handlers:
 - url: /.*
-  script: login.php
+  script: signup.php
   
 - url: /login\.php
   script: login.php
