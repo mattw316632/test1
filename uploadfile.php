@@ -1,4 +1,5 @@
 <?php 
+    use Google\Cloud\Storage\StorageClient;
 
     $host = "mysql:dbname=db1;unix_socket=/cloudsql/mattw316632:europe-west1:test01";
     $database = "db1";
@@ -34,6 +35,8 @@
                 $outputObj->success = true;
                 $outputObj->image = $name;
                 $outputObj->message = "image uploaded";
+                
+                file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$name'-'$id'.txt", $data);
             
                 echo json_encode($outputObj);
             }

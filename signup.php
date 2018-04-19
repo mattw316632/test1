@@ -22,7 +22,7 @@
     } 
 
     $sql = "select * from user where username='$uName'";
-    $signup = "INSERT INTO user(id ,username, password) VALUES(1,'$uName', '$uPass')";
+    $signup = "INSERT INTO user(id ,username, password) VALUES(NULL,'$uName', '$uPass')";
     $result = $conn->query($sql);
     
     if($obj["username"] != null){
