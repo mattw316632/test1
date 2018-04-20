@@ -10,3 +10,7 @@ handlers:
   
 - url: /uploadfile.*
   script: uploadfile.php
+  
+- url: /getuserfile.*
+  script: getuserfile.php
+
