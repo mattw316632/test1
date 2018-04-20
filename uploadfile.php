@@ -19,7 +19,8 @@
     $longitude = $obj["longitude"];
     $latitude = $obj["latitude"];
     $data = $obj["data"];
-
+    $link = 'link';
+    $bump = 0;
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
@@ -28,7 +29,7 @@
 
     $getid = "select id from user where id='$userId'";
 
-    $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, link)";
+    $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bumps, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', '$bump', '$link')";
 
     $result = $conn->query($sql);
     if($obj["name"] != null){
