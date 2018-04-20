@@ -47,14 +47,9 @@
             ${'imageObj'.$count}->bumps = $val['bumps'];
             ${'imageObj'.$count}->data = $val['data'];
             
-            $imageArr[$count] =  $imageObj;
+            array_push($imageArr, ${'imageObj'.$count})
             $count++;
         }
         
-        for($i = 0; $i < $results->num_rows; $i++){
-            
-            
-            
-        }
         echo json_encode($imageArr); 
     }
