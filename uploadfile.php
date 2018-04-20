@@ -49,7 +49,7 @@
                     $outputObj->message = "Image uploaded: '$name'";
 
                     
-                    file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt", $data);
+                   
                     
                     echo json_encode($outputObj);
                 } else {
