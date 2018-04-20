@@ -36,13 +36,13 @@
             
         array_push($imageArr, $imageObj);
         
-        $imageObj->id = 'test2';
-        $imageObj->userid = 'test2';
-        $imageObj->photoName = 'test2';
-        $imageObj->longitude = 'test2';
-        $imageObj->latitude = 'test2';
-        $imageObj->bumps = 'test2';
-        $imageObj->data = 'test2';
+        $imageObj2->id = 'test2';
+        $imageObj2->userid = 'test2';
+        $imageObj2->photoName = 'test2';
+        $imageObj2->longitude = 'test2';
+        $imageObj2->latitude = 'test2';
+        $imageObj2->bumps = 'test2';
+        $imageObj2->data = 'test2';
             
         array_push($imageArr, $imageObj);
         
