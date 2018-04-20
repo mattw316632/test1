@@ -40,7 +40,7 @@
             $outputObj->message = "Image uploaded: '$name'";
 
                 $idVal = $conn->mysql_fetch_assoc($result);
-                id = idVal['id'];
+                $id = idVal['id'];
 
                 $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId'-'$id'.txt)";
                 
