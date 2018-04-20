@@ -14,7 +14,7 @@
     $json = file_get_contents('php://input');  
  
     $obj = json_decode($json,true);
-    $userId= $obj["username"];
+    $userId= $obj["userid"];
     $name = $obj["name"];
     $longitude = $obj["longitude"];
     $latitude = $obj["latitude"];
@@ -24,26 +24,51 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $sql = "select * from image where user_id='$userId'";
-    $signup = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data) VALUES(NULL,'$userID', '$name', '$longitude','$latitude', 0, '$data')";
+    $sql = "select * from image where name='$name' and user_id='$userId'";
+
+    $getid = "select id from image where user_id='$userId' and name='$name'";
+
+
     $result = $conn->query($sql);
-    
     if($obj["name"] != null){
-        if($result->num_rows>=0){
-            $add = $conn->query($signup);
-            if($add == true){
-                $outputObj->success = true;
-                $outputObj->image = $name;
-                $outputObj->message = "image uploaded";
-                
-                file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$name'-'$id'.txt", $data);
+        if($result->num_rows==0){
             
+            $result = $conn->query($getid);    
+            if($result){
+
+                $outputObj->success = true;
+            $outputObj->message = "Image uploaded: '$name'";
+
+                $idVal = $conn->mysql_fetch_assoc($result);
+                id = idVal['id'];
+
+                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId'-'$id'.txt)";
+                
+                $add = $conn->query($uploadImg);
+                if($add == true){
+                    $outputObj->success = true;
+                    $outputObj->message = "Image uploaded: '$name'";
+
+                    
+                    file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt", $data);
+                    
+                    echo json_encode($outputObj);
+                } else {
+                    $outputObj->success = false;
+                    $outputObj->message = "upload error"; 
+                    echo json_encode($outputObj);
+                }
+            
+            } else {
+                $outputObj->success = false;
+                $outputObj->message = "id error"; 
                 echo json_encode($outputObj);
             }
             
         }
         else{
             $outputObj->success = false;
+            $outputObj->message = "You have already used that name";
             echo json_encode($outputObj); 
         }
     }
