@@ -37,7 +37,7 @@
         $imageArr = [];
         
         while ($row = $result->fetch_row()) {
-            array_push(imageArr, $row)
+            array_push($imageArr, $row)
         }
         
     
