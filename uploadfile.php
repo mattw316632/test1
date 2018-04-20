@@ -48,7 +48,7 @@
                     $idVal = $result->fetch_assoc();
                     $id = $idVal['id'];
                     
-                    $upda = "UPDATE image SET data='$userId-$id.txt' WHERE user_id='$userId' and id='$id'"
+                    $upda = "UPDATE image SET data='$userId'-'$id.txt' WHERE user_id='$userId' and id='$id'"
                     
                     $upd = $conn->query($upda);
                     if(upd){
