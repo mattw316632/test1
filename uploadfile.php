@@ -1,5 +1,5 @@
-
 <?php 
+    use Google\Cloud\Storage\StorageClient;
 
     $host = "mysql:dbname=db1;unix_socket=/cloudsql/mattw316632:europe-west1:test01";
     $database = "db1";
@@ -34,15 +34,15 @@
         if($result->num_rows==0){
             
             $result = $conn->query($getid);    
-            if($result->num_rows>=1){
+            if($result){
 
                 $outputObj->success = true;
             $outputObj->message = "Image uploaded: '$name'";
 
-                $idVal = $conn->fetch_assoc($result);
+                $idVal = $conn->mysql_fetch_assoc($result);
                 id = idVal['id'];
 
-                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId')";
+                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId'-'$id'.txt)";
                 
                 $add = $conn->query($uploadImg);
                 if($add == true){
@@ -50,7 +50,7 @@
                     $outputObj->message = "Image uploaded: '$name'";
 
                     
-                   
+                    file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt", $data);
                     
                     echo json_encode($outputObj);
                 } else {
