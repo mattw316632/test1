@@ -20,7 +20,7 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $sql = "select * from image where user_id='$userId'";
+    $sql = "select * from image where user_id=$userId";
     
     
 
@@ -28,7 +28,7 @@
     if($result->num_rows==0){
         $imageArr = [];
         $imageObj->success = false;
-        $imageObj->message = "No images found";
+        $imageObj->message = "No images found for '$userId'";
         array_push($imageArr, $imageObj);
         
         echo json_encode($imageArr);
