@@ -39,16 +39,22 @@
                 $outputObj->success = true;
             $outputObj->message = "Image uploaded: '$name'";
 
-                $idVal = $result->fetch_assoc();
-                $id = $idVal['id'];
+                
 
-                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId'-'$id'.txt)";
+                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, NULL)";
                 
                 $add = $conn->query($uploadImg);
                 if($add == true){
-                    $outputObj->success = true;
-                    $outputObj->message = "Image uploaded: '$name' Link: gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt";
-
+                    $idVal = $result->fetch_assoc();
+                    $id = $idVal['id'];
+                    
+                    $upda = "UPDATE image SET data='$userId-$id.txt' WHERE user_id='$userId' and id='$id'"
+                    
+                    $upd = $conn->query($upda);
+                    if(upd){
+                        $outputObj->success = true;
+                        $outputObj->message = "Image uploaded: '$name' Link: gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt";
+                    }
                     
                     file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt", $data);
                     
