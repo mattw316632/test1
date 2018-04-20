@@ -1,3 +1,4 @@
+
 <?php 
 
     $host = "mysql:dbname=db1;unix_socket=/cloudsql/mattw316632:europe-west1:test01";
@@ -41,7 +42,7 @@
                 $idVal = $conn->fetch_assoc($result);
                 id = idVal['id'];
 
-                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId'-'$id'.txt)";
+                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId')";
                 
                 $add = $conn->query($uploadImg);
                 if($add == true){
