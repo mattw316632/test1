@@ -26,24 +26,8 @@
 
     $result = $conn->query($sql);
     if($result->num_rows==0){
-        $imageObj->id = 'test';
-        $imageObj->userid = 'test';
-        $imageObj->photoName = 'test';
-        $imageObj->longitude = 'test';
-        $imageObj->latitude = 'test';
-        $imageObj->bumps = 'test';
-        $imageObj->data = 'test';
-            
-        array_push($imageArr, $imageObj);
-        
-        $imageObj2->id = 'test2';
-        $imageObj2->userid = 'test2';
-        $imageObj2->photoName = 'test2';
-        $imageObj2->longitude = 'test2';
-        $imageObj2->latitude = 'test2';
-        $imageObj2->bumps = 'test2';
-        $imageObj2->data = 'test2';
-            
+        $imageObj->success = false;
+        $imageObj->message = "No images found";
         array_push($imageArr, $imageObj);
         
         echo json_encode($imageArr);
@@ -52,7 +36,8 @@
         
         $count = 0;
         while($val = $result->fetch_assoc()){
-            $imageObj->countVal = $count;
+            $imageObj->success = true;
+            $imageObj ->countVal = $count;
             $imageObj->id = $val['id'];
             $imageObj->userid = $val['user_id'];
             $imageObj->photoName = $val['name'];
