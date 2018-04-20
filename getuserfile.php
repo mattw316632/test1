@@ -35,6 +35,7 @@
         
     } else {
         $imageArr = '';
+        $imageObj->success = true;
         $count = 0;
         while($val = $result->fetch_assoc()){
             $imageObj->success = true;
