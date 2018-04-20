@@ -26,7 +26,7 @@
 
     $sql = "select * from image where name='$name' and user_id='$userId'";
 
-    $getid = "select id from user where user_id='$userId'";
+    $getid = "select id from user where id='$userId'";
 
     $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, link)";
 
