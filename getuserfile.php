@@ -47,8 +47,8 @@
             $imageObj->bumps = $val['bumps'];
             $imageObj->data = $val['data'];
             
-            $imageArr[$count] =  $imageObj;
+            echo json_encode($imageObj); 
             $count++;
         }
-        echo json_encode($imageArr); 
+        
     }
