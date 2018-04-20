@@ -44,6 +44,7 @@
                     $outputObj->success = true;
                     $outputObj->message = "Image uploaded: '$name'";
                     
+                    $result = $conn->query($sql);    
                     $idVal = $result->fetch_assoc();
                     $id = $idVal['id'];
                     
@@ -52,10 +53,10 @@
                     $upd = $conn->query($upda);
                     if(upd){
                         $outputObj->success = true;
-                        $outputObj->message = "Image uploaded: '$name' Link: gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt";
+                        $outputObj->message = "Image uploaded: '$name' Link: gs://mattw316632-201000.appspot.com/Photos/$userId-$id.txt";
                     }
                     
-                    file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt", $data);
+                    file_put_contents("gs://mattw316632-201000.appspot.com/Photos/$userId-$id.txt", $data);
                     
                     echo json_encode($outputObj);
                 } else {
