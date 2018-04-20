@@ -39,7 +39,7 @@
         while($val = $result->fetch_assoc()){
             $imageObj->success = true;
             $imageObj->countVal = $count;
-            $imageObj->id = $val->['id'];
+            $imageObj->id = $val['id'];
             $imageObj->userid = $val['user_id'];
             $imageObj->photoName = $val['name'];
             $imageObj->longitude = $val['longitude'];
