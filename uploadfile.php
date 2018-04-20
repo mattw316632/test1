@@ -39,7 +39,7 @@
                 $outputObj->success = true;
             $outputObj->message = "Image uploaded: '$name'";
 
-                $idVal = $conn->fetch_assoc($result);
+                $idVal = $result->fetch_assoc();
                 $id = $idVal['id'];
 
                 $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, '$userId'-'$id'.txt)";
@@ -47,7 +47,7 @@
                 $add = $conn->query($uploadImg);
                 if($add == true){
                     $outputObj->success = true;
-                    $outputObj->message = "Image uploaded: '$name'";
+                    $outputObj->message = "Image uploaded: '$name' Link: gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt";
 
                     
                     file_put_contents("gs://mattw316632-201000.appspot.com/Photos/'$userId'-'$id'.txt", $data);
