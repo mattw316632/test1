@@ -35,7 +35,7 @@
         if($result->num_rows==0){
             
             $result = $conn->query($getid);    
-            if($result){
+            if($result->num_rows>0){
 
                 $add = $conn->query($uploadImg);
                 if($add == true){
