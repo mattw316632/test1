@@ -1,5 +1,4 @@
 <?php 
-    use Google\Cloud\Storage\StorageClient;
 
     $host = "mysql:dbname=db1;unix_socket=/cloudsql/mattw316632:europe-west1:test01";
     $database = "db1";
