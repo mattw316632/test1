@@ -37,20 +37,12 @@
         $imageArr = [];
         $count = 0;
         $imageObj->success = true;
-        while($val = $result->fetch_assoc()){
-            $imageObj->success = true;
-            $imageObj->countVal = $count;
-            $imageObj->id = $val['id'];
-            $imageObj->userid = $val['user_id'];
-            $imageObj->photoName = $val['name'];
-            $imageObj->longitude = $val['longitude'];
-            $imageObj->latitude = $val['latitude'];
-            $imageObj->bumps = $val['bumps'];
-            $imageObj->data = $val['data'];
+        while($row = $result->fetch_array()){
+            array_push($imageArr, $row);
             
-            array_push($imageArr, $imageObj);
-            $count++;
+            
         }
+
         
         
         echo json_encode($imageArr); 
