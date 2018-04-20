@@ -26,8 +26,9 @@
 
     $sql = "select * from image where name='$name' and user_id='$userId'";
 
-    $getid = "select id from image where user_id='$userId' and name='$name'";
+    $getid = "select id from user where user_id='$userId'";
 
+    $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, link)";
 
     $result = $conn->query($sql);
     if($obj["name"] != null){
@@ -36,15 +37,12 @@
             $result = $conn->query($getid);    
             if($result){
 
-                $outputObj->success = true;
-            $outputObj->message = "Image uploaded: '$name'";
-
-                
-
-                $uploadImg = "INSERT INTO image(id, user_id ,name, longitude, latitude, bump, data)  VALUES(NULL,'$userId', '$name', '$longitude','$latitude', 0, NULL)";
-                
                 $add = $conn->query($uploadImg);
                 if($add == true){
+                    
+                    $outputObj->success = true;
+                    $outputObj->message = "Image uploaded: '$name'";
+                    
                     $idVal = $result->fetch_assoc();
                     $id = $idVal['id'];
                     
