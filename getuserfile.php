@@ -35,11 +35,23 @@
         
     } else {
         $imageArr = [];
-        
-        while ($row = $result->fetch_row()) {
-            array_push($imageArr, $row)
+        $count = 0;
+        $imageObj->success = true;
+        while($val = $result->fetch_assoc()){
+            $imageObj->success = true;
+            $imageObj->countVal = $count;
+            $imageObj->id = $val['id'];
+            $imageObj->userid = $val['user_id'];
+            $imageObj->photoName = $val['name'];
+            $imageObj->longitude = $val['longitude'];
+            $imageObj->latitude = $val['latitude'];
+            $imageObj->bumps = $val['bumps'];
+            $imageObj->data = $val['data'];
+            
+            array_push($imageArr, $imageObj);
+            $count++;
         }
         
-    
+        
         echo json_encode($imageArr); 
     }
