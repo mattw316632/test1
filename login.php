@@ -32,8 +32,10 @@
             echo json_encode($outputObj); 
         }
         else{
+            $val = $conn->fetch_assoc($result);
             $outputObj->success = true;
-            $outputObj->user = $uName;
+            $outputObj->user = $val['username'];
+            $outputObj->id = $val['id'];
             
             echo json_encode($outputObj); 
         }
