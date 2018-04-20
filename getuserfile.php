@@ -34,7 +34,7 @@
         $imageObj->bumps = 'test';
         $imageObj->data = 'test';
             
-        $imageArr.push($imageObj);
+        array_push($imageArr, $imageObj);
         
         echo json_encode($imageArr);
         
@@ -42,6 +42,7 @@
         
         $count = 0;
         while($val = $result->fetch_assoc()){
+            $imageObj->countVal = $count;
             $imageObj->id = $val['id'];
             $imageObj->userid = $val['user_id'];
             $imageObj->photoName = $val['name'];
@@ -50,7 +51,7 @@
             $imageObj->bumps = $val['bumps'];
             $imageObj->data = $val['data'];
             
-            $imageArr.push($imageObj);
+            array_push($imageArr, $imageObj);
             $count++;
         }
         echo json_encode($imageArr); 
