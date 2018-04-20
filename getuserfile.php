@@ -22,10 +22,11 @@
 
     $sql = "select * from image where user_id='$userId'";
     
-    $imageArr = [];
+    
 
     $result = $conn->query($sql);
     if($result->num_rows==0){
+        $imageArr = [];
         $imageObj->success = false;
         $imageObj->message = "No images found";
         array_push($imageArr, $imageObj);
@@ -33,11 +34,12 @@
         echo json_encode($imageArr);
         
     } else {
-        
+        $imageArr = [];
+        $imageObj->success = true;
         $count = 0;
         while($val = $result->fetch_assoc()){
             $imageObj->success = true;
-            $imageObj ->countVal = $count;
+            $imageObj->countVal = $count;
             $imageObj->id = $val['id'];
             $imageObj->userid = $val['user_id'];
             $imageObj->photoName = $val['name'];
