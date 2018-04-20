@@ -35,20 +35,19 @@
         
     } else {
         $imageArr = [];
-        $imageObj->success = true;
         $count = 0;
         while($val = $result->fetch_assoc()){
-            $imageObj->success = true;
-            $imageObj->countVal = $count;
-            $imageObj->id = $val['id'];
-            $imageObj->userid = $val['user_id'];
-            $imageObj->photoName = $val['name'];
-            $imageObj->longitude = $val['longitude'];
-            $imageObj->latitude = $val['latitude'];
-            $imageObj->bumps = $val['bumps'];
-            $imageObj->data = $val['data'];
+            $imageObj[$count]->success = true;
+            $imageObj[$count]->countVal = $count;
+            $imageObj[$count]->id = $val->['id'];
+            $imageObj[$count]->userid = $val['user_id'];
+            $imageObj[$count]->photoName = $val['name'];
+            $imageObj[$count]->longitude = $val['longitude'];
+            $imageObj[$count]->latitude = $val['latitude'];
+            $imageObj[$count]->bumps = $val['bumps'];
+            $imageObj[$count]->data = $val['data'];
             
-            array_push($imageArr, $imageObj);
+            array_push($imageArr, $imageObj[$count]);
             $count++;
         }
         echo json_encode($imageArr); 
