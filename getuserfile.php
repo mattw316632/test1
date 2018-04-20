@@ -36,6 +36,16 @@
             
         array_push($imageArr, $imageObj);
         
+        $imageObj->id = 'test2';
+        $imageObj->userid = 'test2';
+        $imageObj->photoName = 'test2';
+        $imageObj->longitude = 'test2';
+        $imageObj->latitude = 'test2';
+        $imageObj->bumps = 'test2';
+        $imageObj->data = 'test2';
+            
+        array_push($imageArr, $imageObj);
+        
         echo json_encode($imageArr);
         
     } else {
